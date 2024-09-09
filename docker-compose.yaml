@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  pyspark-jupyter:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: football-spark
+    networks:
+      - football_network
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./notebooks:/home/jovyan/work
+    command: start-notebook.sh --NotebookApp.token=''
+    environment:
+      POSTGRES_HOST: postgres
+      POSTGRES_PORT: 5432
+      POSTGRES_DB: football
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: football
+    depends_on:
+      - postgres
+  
+
+  postgres:
+    image: bitnami/postgresql:14.13.0
+    container_name: football-postgres
+    networks:
+      - football_network
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: football
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: football
+
+
+networks:
+  football_network:
+    driver: bridge
