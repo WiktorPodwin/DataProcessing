@@ -8,6 +8,8 @@ RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
 RUN usermod -aG sudo jovyan
 
+RUN conda install -y pydot pydotplus
+
 COPY requirements.txt /tmp/requirements.txt
 
 RUN pip install --no-cache-dir -r /tmp/requirements.txt
