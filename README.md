@@ -18,24 +18,25 @@ This project focuses on data engineering using PySpark to process and analyze fo
 * Prepares the data for machine learning models, performing feature engineering and transformation steps to build predictive models, such as forecasting match outcomes.
 
 ### 5. Insights and Reporting
-* The project generates visualizations that can help understand key patterns and make data-driven decisions.
+* The project generates visualizations that can help understand key patterns and make data-driven decisions. Reports generated from Power BI facilitate a deeper understanding of the data.
 
 ## What Tools Are Used In The Project?
 * Apache Spark: Used for distributed data processing and ***ETL*** (Extract, Transform, Load) operations
 * PostgreSQL: Serves as the relational database for storing, querying, and managing both raw and transformed football data
-* Docker:  Facilitates containerization to run PostgreSQL and Jupyter-Pyspark-Notebook in isolated environments
+* Power BI: Utilized for advanced data visualization and reporting.
+* Docker: Facilitates containerization to run PostgreSQL and Jupyter-Pyspark-Notebook in isolated environments
 * Python Libraries: 'pyspark', 'numpy', 'scikit-learn', 'tensorflow', 'matplotlib', 'seaborn'
 
-## Data Explaination
+## Data Explanation
 This dataset includes results of international football matches starting from the very first official match in 1872 up to 2024. The matches range from FIFA World Cup to FIFI Wild Cup to regular friendly matches. The matches are strictly men's full internationals. You can browse this dataset [here](https://www.kaggle.com/datasets/martj42/international-football-results-from-1872-to-2017).
 
 ## Pipelines
 This project offers different pipelines depending on our needs. We can split it into few important parts: 
 
 ### 1. ETL-Visualization 
-The first step is the ***ETL*** pipeline, which extracts data from various sources and prepares it using SQL queries. Once the data is cleaned, the pipeline loads it into a ***Data Warehouse***. After the ***ETL*** process is complete, the transformed data is visualized using different graphs, which are then saved in a specified directory.
+The first step is the ***ETL*** pipeline, which extracts data from various sources and prepares it using SQL queries. Once the data is cleaned, the pipeline loads it into a ***Data Warehouse***. After the ***ETL*** process is complete, the transformed data is visualized using different graphs and dashboards in Power BI.
 
-![Example results](notebooks/visualization/graphs/tournament_percentage.png)
+![Example results](power_bi/data_analysis_results.png)
 
 ### 2. Modeling
 Predicting football match scores is treated as a regression problem. To achieve this, a multi-input, multi-output and multi-class model has been designed. This pipeline includes the ***ETL*** process, with the main tasks being data extraction, feature engineering and data loading. After this process, the model can be created. Following model training, the model is evaluated and visualized.
@@ -45,6 +46,7 @@ Predicting football match scores is treated as a regression problem. To achieve 
 
 ## Requirements
 * Docker Desktop
+* Power BI Desktop
 
 ## Prepare Steps
 All you need is copy this repository and build docker image:
